@@ -1,0 +1,14 @@
+name: CI de Docker
+
+on:
+  push:
+    branches: [ "main" ]  # Se activa cada vez que subes algo a la rama main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4 # Descarga tu código en el servidor de GitHub
+    
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag mi-app-automatizada:latest # Compila la imagen automáticamente
